@@ -11,16 +11,17 @@ word_counter = {}
 a=[]
 b=[]
 over=[]
-no=['one','first','second','end','means','third', 'least', 'said','member']
+no=['one','first','second','end','means','third', 'least', 'said','member','back']
 
-traning_path=['alphatrain-A','alphatrain-B','alphatrain-C','alphatrain-D','alphatrain-E','alphatrain-F','alphatrain-G','alphatrain-H']
+#traning_path=['alphatrain-A','alphatrain-B','alphatrain-C','alphatrain-D','alphatrain-E','alphatrain-F','alphatrain-G','alphatrain-H']
+traning_path=['A','B','C','D','E','F','G','H']
 model_=['A_.model','B_.model','C_.model','D_.model','E_.model','F_.model','G_.model','H_.model']
 n=0
 t=0
 type_n=0
 def readtraingfile(words_a,num):
     
-   
+    n=0
     s=0
     while s<len(model_) :
         model_p='C:\\Users\\zxc82\\wipotest\\model\\'+model_[s]
@@ -29,13 +30,14 @@ def readtraingfile(words_a,num):
         while n<len(traning_path) :
             t=0
             all_num=0
-            tr_p='S:\\wipo\\wipo-alphatrain\\'+traning_path[n]
+            #tr_p='S:\\wipo\\wipo-alphatrain\\'+traning_path[n]
+            tr_p='test\\all\\'+traning_path[n]
             model = word2vec.Word2Vec.load(model_p) 
             for word in words_a:
                 if word in word_counter:
-                    if word in model.vocab:
-                        if word not in no:
-                            word_counter[word] += 1
+                    #if word in model.vocab:
+                    if word not in no:
+                        word_counter[word] += 1
                 else:
                      word_counter[word] = 0
          
@@ -57,13 +59,13 @@ def readtraingfile(words_a,num):
                             if word not in no:
                                  word_counter2[word] += 1
                         else:
-                            word_counter2[word] =0
+                            word_counter2[word] = 1
                  
                     popular_words2 = sorted(word_counter2, key = word_counter2.get, reverse = True)
                     #print(popular_words2[:num])
                     b=popular_words2[:num]
-                        #print (b_)
-                   
+                    print (b)
+                    
                     
                     try:
                         sim =model.n_similarity(a, b)
