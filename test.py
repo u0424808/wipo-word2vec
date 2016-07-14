@@ -20,12 +20,12 @@ t=0
 type_n=0
 def readtraingfile(words_a,num):
     
-    n=1
+   
     s=0
     while s<len(model_) :
         model_p='C:\\Users\\zxc82\\wipotest\\model\\'+model_[s]
         s=s+1
-        
+        n=0
         while n<len(traning_path) :
             t=0
             all_num=0
@@ -37,7 +37,7 @@ def readtraingfile(words_a,num):
                         if word not in no:
                             word_counter[word] += 1
                 else:
-                     word_counter[word] = 1
+                     word_counter[word] = 0
          
             popular_words = sorted(word_counter, key = word_counter.get, reverse = True)
        
@@ -57,14 +57,14 @@ def readtraingfile(words_a,num):
                             if word not in no:
                                  word_counter2[word] += 1
                         else:
-                            word_counter2[word] = 1
+                            word_counter2[word] =0
                  
                     popular_words2 = sorted(word_counter2, key = word_counter2.get, reverse = True)
                     #print(popular_words2[:num])
                     b=popular_words2[:num]
                         #print (b_)
-                    sim =model.n_similarity(a, b)
-                    return print(sim)
+                   
+                    
                     try:
                         sim =model.n_similarity(a, b)
                         print('輸入的檔案目前和',traning_path[n],'的相似度為 ',sim)
